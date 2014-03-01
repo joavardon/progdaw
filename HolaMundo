@@ -1,0 +1,7 @@
+Mundo(){
+
+void HolaMundo(){
+System.out.println("Hola Mundo");
+}
+
+}
