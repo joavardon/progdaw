@@ -10,6 +10,6 @@ public static void main(String[] args){
 	
 	media=(numero1+numero2)/2;
 	System.out.println("La media es "+media);
-	
+	//fin
 }
 }
