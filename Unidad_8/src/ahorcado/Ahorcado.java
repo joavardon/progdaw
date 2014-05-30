@@ -31,12 +31,6 @@ public class Ahorcado {
 		String palabraBuscada=Ahorcado.reemplazarCaracteresRaros(mipalabraMay);
 		//creo un array de caracteres con las letras de la palabra a buscar
 		ArrayList<Character> lista=Ahorcado.palabraArray(palabraBuscada);
-		/*palabra buscada
-		for(int i=0;i<lista.size();i++){
-			System.out.print(lista.get(i));
-		}
-		*/
-
 		//creo lista de caracteres vacia del mismo tamaño que la palabra buscada
 		ArrayList<Character> lista2=new ArrayList<Character>();
 		for(int i=0;i<lista.size();i++){
@@ -80,8 +74,9 @@ public class Ahorcado {
 					//si lo hay acierto a true y pongo en su lugar el caracter acertado, y borro la siguiente posicion del array
 					if(letraIntroducida==lista.get(i)){
 						acierto=true;
-						lista2.add(i, lista.get(i));
-						lista2.remove(i+1);
+						lista2.set(i,lista.get(i));
+					//lista2.add(i, lista.get(i));
+					//lista2.remove(i+1);
 					}
 				}
 				//para cada caracter introducido sin acierto incremento en un fallo
