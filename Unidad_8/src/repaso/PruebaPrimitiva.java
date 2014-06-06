@@ -37,7 +37,6 @@ public class PruebaPrimitiva {
 		Primitiva loteria=new Primitiva("06/06/2014",1250000,cg);
 		System.out.println(loteria.toString());
 		loteria.muestraPremios(miCombinacion,complementario);
-	
 		}catch(Exception e){System.out.println("Excepcion: "+e.getMessage());};
 		
 	}
