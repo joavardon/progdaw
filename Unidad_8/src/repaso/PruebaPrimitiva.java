@@ -23,7 +23,7 @@ public class PruebaPrimitiva {
 		miCombinacion.add(13);
 		miCombinacion.add(12);
 		miCombinacion.add(33);
-		//miCombinacion.add(43);
+		miCombinacion.add(43);
 		miCombinacion.add(23);
 		miCombinacion.add(21);
 		miCombinacion.add(41);
@@ -37,6 +37,9 @@ public class PruebaPrimitiva {
 		Primitiva loteria=new Primitiva("06/06/2014",1250000,cg);
 		System.out.println(loteria.toString());
 		loteria.muestraPremios(miCombinacion,complementario);
+		System.out.println("Mi combinación: ");
+		for(int i=0;i<miCombinacion.size();i++)
+			System.out.print(miCombinacion.get(i)+" ");
 		}catch(Exception e){System.out.println("Excepcion: "+e.getMessage());};
 		
 	}

@@ -83,8 +83,8 @@ public class Primitiva {
 				numAciertos++;
 			}
 		}
-		if(numAciertos>=6){
-			numAciertos=6;
+		if(numAciertos>6){
+			numAciertos=7;
 		}
 		return numAciertos ;	
 	}
@@ -110,11 +110,11 @@ public class Primitiva {
 				System.out.println("6 aciertos");
 			}
 			break;
-		}
-		if(aciertos>6){
+		case 7:
 			System.out.println("6 aciertos");
+			break;
 		}
-		}
+	}
 		
 	}
 
