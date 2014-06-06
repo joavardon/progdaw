@@ -19,7 +19,7 @@ public class Ejercicio5 {
 		ArrayList<Integer>lista=new ArrayList<Integer>();
 		double coinciden=0;
 		boolean dupli;
-		for(int cont=0;cont<1000000;cont++){
+		for(int cont=0;cont<10;cont++){
 			for(int i=0;i<23;i++){
 				int c=(int) (Math.random()*365);
 				lista.add(c);
@@ -31,7 +31,7 @@ public class Ejercicio5 {
 			lista.removeAll(lista);//vacio la lista de elementos para que no tenga elementos al comenzar el bucle
 			dupli=false;//pongo a false al comienzo del bucle
 		}
-		System.out.printf("%s %.2f","la probabilidad es : ", coinciden/10000);//coinciden*100/100000
+		System.out.printf("%s %.2f","la probabilidad es : ", coinciden/1000);//coinciden*100/100000
 	}
 
 }

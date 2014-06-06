@@ -125,11 +125,12 @@ public class Ahorcado {
 	
 	private static ArrayList<Character> palabraArray(String mipalabra){
 		ArrayList<Character> lista=new ArrayList<Character>();
-		
+		/*
 		for(char c:mipalabra.toCharArray()){
 			lista.add(c);
-		}
-		
+		}*/
+		for(int i=0;i<mipalabra.length();i++)
+			lista.add(mipalabra.charAt(i));
 		return lista;
 	}
 }
