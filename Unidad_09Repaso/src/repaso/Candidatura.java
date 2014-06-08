@@ -44,7 +44,7 @@ public class Candidatura {
 			listaPartido=listaPartido+lista.get(i)+"; ";
 			}
 		}
-		return "Lista del "+this.nombre+":\n"+listaPartido; 
+		return "Lista del "+getNombre()+":\n"+listaPartido; 
 	}
 	
 	public void addCandidato(String nombre){
@@ -58,6 +58,13 @@ public class Candidatura {
 		else{
 			System.out.println("no mismo nombre");
 		}
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		return result;
 	}
 	@Override
 	public boolean equals(Object obj) {
