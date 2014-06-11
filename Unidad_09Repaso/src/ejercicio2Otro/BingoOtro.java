@@ -1,50 +1,53 @@
-package ejercicio2;
+package ejercicio2Otro;
+
+
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
 
-public class Bingo {
+public class BingoOtro {
 	private ArrayList<Integer>bombo;
-	private ArrayList<Integer>salidos=new ArrayList<Integer>();
-	Bingo(ArrayList<Integer>b){
+
+	BingoOtro(ArrayList<Integer>b){
 		this.bombo=b;
 	}
 	public int saca(){
-		int numeroSacado=(int)(Math.random()*90+1);;
-		while(haSalido(numeroSacado)==true){
+		int numeroSacado=-1;;
+		do{
 			numeroSacado=(int)(Math.random()*90+1);
-		}
 			Iterator<Integer>ite=this.bombo.iterator();
 			while(ite.hasNext()){
 				int valor=ite.next();
 				if(numeroSacado==valor ){
-					salidos.add(valor);
-					break;
+					ite.remove();
 				}
 			}
-		//System.out.println(numeroSacado);
-	
+		}while(haSalido(numeroSacado));
+
 		return numeroSacado;
 	}
-	
+
 	public boolean haSalido(int bola){
 		boolean haSalido=false;
-		if(this.salidos.contains(bola)){
+		if(this.bombo.contains(bola)){
 			haSalido=true;
 		}
 		return haSalido;
 	}
-	
+
 	public  boolean quedanBolas(){
 		boolean quedan=true;
 		if(this.bombo.size()==0){
 			quedan=false;
 		}
-		
+		else{
+			quedan=true;
+		}
+
 		return quedan;
 	}
-	
+
 	public String toString(){
 		String cadena="";
 		for(int i=0;i<this.bombo.size();i++){
@@ -58,8 +61,8 @@ public class Bingo {
 	public void setBombo(ArrayList<Integer> bombo) {
 		this.bombo = bombo;
 	}
-	
-	
-	
-	
+
+
+
+
 }

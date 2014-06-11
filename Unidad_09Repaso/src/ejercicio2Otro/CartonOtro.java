@@ -1,18 +1,18 @@
-package ejercicio2;
+package ejercicio2Otro;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.TreeSet;
 
 
-public class Carton {
+public class CartonOtro {
 	private int[][]carton;
-	private ArrayList<Integer>tachados;//para que al añadir un numero a tachados que ya ha salido no se añada
-	
-	Carton(){
+	private HashSet<Integer>tachados;
+
+	CartonOtro(){
 		this.carton=new int[3][9];
-		this.tachados=new ArrayList<Integer>();
+		this.tachados=new HashSet<Integer>();
 	}
-	
+
 	public boolean estaEnColumna(int n,int[][] c,int j){
 		boolean esta=false;
 		int con=0;
@@ -35,7 +35,7 @@ public class Carton {
 				do{
 					n=(int)(Math.random()*(numFin-numIni+1)+numIni);
 				}while(estaEnColumna(n,this.carton,j)==true);
-				
+
 				this.carton[i][j]= n;
 				numIni=numIni+10;
 				numFin=numFin+10;
@@ -52,43 +52,42 @@ public class Carton {
 		}
 		return cadena;
 	}
-	
+
 	public void marca(int x,int y){
 		String cadena="";
 		for(int i=0;i<this.carton.length;i++){
 			for(int j=0;j<this.carton[i].length;j++){
-				if(this.tachados.contains(carton[i][j])){
-					cadena=cadena+ this.carton[i][j]+"X   ";}
+				if(tachados.contains(carton[i][j])){
+				cadena=cadena+ this.carton[i][j]+"X   ";}
 				else{
 					cadena=cadena+ this.carton[i][j]+"    ";}
 				}
 			cadena=cadena+"\n";
 			}
-			
 			System.out.println(cadena);
 		}
-	
+
+
 	public void marca(int bola){
 		//boolean esta=false;
 		for(int i=0;i<this.carton.length;i++){
-			for(int j=0;j<this.carton[i].length;j++){
-				if(this.carton[i][j]==bola){
-				//esta=true;
+		for(int j=0;j<this.carton[i].length;j++){
+			if(this.carton[i][j]==bola){
+			//	esta=true;
 				this.tachados.add(bola);
-					
-					if(esBingo()){
-						marca(i,j);}
-					}
-				}
-		
-			}/*
+				if(esBingo()){
+				marca(i,j);}
+			}
+		}
+
+	}/*
 		if(esta==false){
 			System.out.println("El numero "+bola+" no esta");
 		}
 		else{
 			System.out.println("El numero "+bola+" sí esta");
-		}*/
-		
+		}
+		*/
 	}
 	public boolean esBingo() {
 		boolean esBingo = false;
@@ -106,12 +105,13 @@ public class Carton {
 		this.carton = carton;
 	}
 
-	public ArrayList<Integer> getTachados() {
+	public HashSet<Integer> getTachados() {
 		return tachados;
 	}
 
-	public void setTachados(ArrayList<Integer> tachados) {
+	public void setTachados(HashSet<Integer> tachados) {
 		this.tachados = tachados;
 	}
-	
+
+
 }
