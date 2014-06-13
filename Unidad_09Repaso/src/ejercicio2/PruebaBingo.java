@@ -4,41 +4,43 @@ import java.util.ArrayList;
 
 
 public class PruebaBingo {
-
+	private static  Bingo mibombo;
+	private   static Carton [] cartones;
+	
 	public static void main(String[] args) {
 		ArrayList<Integer>numeros=new ArrayList<Integer>();
 		for(int i=1;i<=90;i++){
 			numeros.add(i);
 		}
 		
-		Bingo mibombo=new Bingo(numeros);
-		Carton micarton=new Carton();
-		Carton micarton1=new Carton();
-		Carton micarton2=new Carton();
-		Carton []cartones={micarton,micarton1,micarton2};
-		for(int i=0;i<cartones.length;i++){
-			cartones[i].rellenaAleatorio();
-			System.out.println("Carton "+(i+1)+" limpio: \n"+cartones[i].toString());
+		mibombo=new Bingo(numeros);
+		cartones=new Carton[3];
+		for(int i=0;i<3;i++){
+			Carton c=new Carton();
+			c.rellenaAleatorio();
+			cartones[i]=c;
 		}
+	
 		boolean acabar=false;
 		//cuando haya bingo la ronda acabara con acabar a true y se cierra el bucle while
-		while(!acabar ){
+		while(!acabar && mibombo.quedanBolas()){
 			int n=mibombo.saca();
 			System.out.println("NUEVA EXTRACCION: \n"+"Sale el numero: "+n);
-			System.out.println("***********************************************************************");
-			for(int i=0;i<cartones.length;i++){
-			cartones[i].marca(n);//añade coincidencia a tachado e imprime el carton con marcas
-			System.out.println("Carton "+(i+1)+ " llevas "+cartones[i].getTachados().size()+" aciertos");
+		//	System.out.println("***********************************************************************");
+			for(int i=0;i<cartones.length ;i++){
+			cartones[i].marca(n);//pone en marcado true o false
+			//System.out.println("Carton "+(i+1)+ " llevas "+cartones[i].getTachados().size()+" aciertos");
 				if(cartones[i].esBingo()){
 					System.out.println("¡Has cantado Bingo!");
 					System.out.println("El ganador es el carton "+(i+1));
 					acabar=true;
 				}
-				System.out.println("----------------------------------------------------------");
+		//		System.out.println("----------------------------------------------------------");
 			}
 			
 		}
-		System.out.println(mibombo.quedanBolas());
+		for(int j=0;j<3;j++)System.out.println(cartones[j].toString());
+		//System.out.println(mibombo.quedanBolas());
 
 	}
 }
