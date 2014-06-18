@@ -1,23 +1,60 @@
 package cine;
 
+
+
 import java.util.ArrayList;
-
 import java.util.Iterator;
-
 import java.util.Scanner;
 
-public class Cine {
-
+public class CineMenu2 {
 	private static ArrayList<Sesion>micine;
-	private static ArrayList<String>actuales=new ArrayList<String>();
-	
-	
-	
+	private static ArrayList<String>actuales;
+	private static Scanner teclado;
+	public static void main(String[] args) {
+		Pelicula p1=new Pelicula("Amadeus");
+		Pelicula p2=new Pelicula("Amadeus 3D");
+		System.out.println(p1.equals(p2));
+		Pelicula p3=new Pelicula("Amadeu");
+		System.out.println(p1.equals(p3));
+		String[] opciones={"Crear sesión","Borrar sesión","Ver disponibles","Peliculas en proyección","Salir"};
+		Menu cine=new Menu(opciones,5);
+		micine=new ArrayList<Sesion>();
+		actuales=new ArrayList<String>();
+		cine.setTitulo("MI CINE");
+		teclado=new Scanner(System.in);
+		int opcion;
+		do{
+		opcion=cine.mostrar();
+		switch(opcion){
+		case 1:
+			micine.add(creaSesion());
+			break;
+		case 2:
+			System.out.println("Indice sesion a borrar: ");
+			int n=teclado.nextInt()-1;
+			if(n>=0 && n<micine.size())
+				micine.remove(micine.get(n));
+			break;
+		case 3:
+			Iterator<Sesion>ite=micine.iterator();
+			while(ite.hasNext()){
+				Sesion s=ite.next();
+				System.out.println(s.toString());
+			}
+			break;
+		case 4:
+			pelisAhora();
+			break;
+		}
+		}while(opcion!=5);
+
+	}
 	public static void pelisAhora(){
 		Scanner teclado=new Scanner(System.in);
 		//a que hora queremos mirar las pelis que hay
 		System.out.println("¿Que hora es: ?");
 		String hora=teclado.next();
+		actuales.removeAll(actuales);
 		boolean esta;
 		//vamos a ir mirando en todas las sesiones del cine
 		for(int i=0;i<micine.size();i++){
@@ -32,7 +69,12 @@ public class Cine {
 						}
 				}
 				if(!esta){//si no estaba ya(el resultado de esta tras el for es falso)
-					actuales.add(micine.get(i).getNombre());//añado el nombre de la pelicula a actuales
+					if(micine.get(i).getNombre().endsWith("3D")){
+					actuales.add(micine.get(i).getNombre().substring(0,micine.get(i).getNombre().lastIndexOf("3D",'3')).trim());
+					}
+					else{
+						actuales.add(micine.get(i).getNombre());
+					}//añado el nombre de la pelicula a actuales
 				}
 			}	
 		}
@@ -54,42 +96,4 @@ public class Cine {
 		Sesion s=new Sesion(nombre,hora, sala);
 		return s;
 	}
-	public static void main(String[] args) {
-		menu();
-
-	}
-	private static void menu() {
-		Scanner teclado=new Scanner(System.in);
-		micine=new ArrayList<Sesion>();
-		int opcion;
-		do{
-			System.out.println("Elige una opcion: \n"+"1. Crear sesión\n"+"2. Borrar sesión\n"
-			+"3. Ver disponibles\n"+"4. Peliculas en proyección\n"+"5. Salir");
-			opcion=teclado.nextInt();
-			switch(opcion){
-			case 1:
-				micine.add(creaSesion());
-				break;
-			case 2:
-				System.out.println("Indice pelicula a borrar: ");
-				int n=teclado.nextInt()-1;
-				if(n>=0 && n<micine.size())
-					micine.remove(micine.get(n));
-				break;
-			case 3:
-				Iterator<Sesion>ite=micine.iterator();
-				while(ite.hasNext()){
-					Sesion s=ite.next();
-					System.out.println(s.toString());
-				}
-				break;
-			case 4:
-				pelisAhora();
-				break;
-			}
-
-		}while(opcion!=5);
-	
-	}
-
 }

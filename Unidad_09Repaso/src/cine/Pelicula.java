@@ -37,16 +37,14 @@ public class Pelicula {
 		
 	}
 	public boolean iguales(String p){
-		String peli1,peli2,peli1ini,peli2ini;
+		String peli1,peli2;
 		if(this.nombre.endsWith("3D")){
-			peli1ini=this.nombre.substring(0, this.nombre.lastIndexOf("3D",'3'));
-			peli1=peli1ini.trim();
+			peli1=this.nombre.substring(0, this.nombre.lastIndexOf("3D",'3')).trim();
 		}
 		else{
 			peli1=this.nombre;}
 		if(p.endsWith("3D")){
-			peli2ini=p.substring(0, p.lastIndexOf("3D",'3'));
-			peli2=peli2ini.trim();
+			peli2=p.substring(0, p.lastIndexOf("3D",'3')).trim();
 		}
 		else{
 			peli2=p;
@@ -72,6 +70,33 @@ public class Pelicula {
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		return result;
+	}
+	@Override
+	
+	public boolean equals(Object obj) {
+		String nombre3D=nombre+" 3D";
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pelicula other = (Pelicula) obj;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		}else if(!nombre.equals(other.nombre+" 3D")&&!nombre3D.equals(other.nombre)&&!nombre.equals(other.nombre))
+			return false;
+		
+		return true;
+	}
+	
 	
 	
 	

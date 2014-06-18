@@ -7,9 +7,15 @@
 package ejercicios2;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ListIterator;
 
 public class Ejercicio3 {
+	public static void corta2(ArrayList<Integer> lista){
+		lista.remove(0);
+		lista.remove(lista.size()-1);
+		//System.out.println(lista);
+	}
 	public static ArrayList<Integer> corta(ArrayList<Integer>lista){
 		int p=lista.get(0);
 		int u=lista.get(lista.size()-1);
@@ -30,9 +36,11 @@ public class Ejercicio3 {
 		return lista;
 	}
 	public static ArrayList<Integer> centro(ArrayList<Integer>lista){
-		lista.remove(lista.get(0));
-		lista.remove(lista.get(lista.size()-1));
-		return lista;
+		ArrayList<Integer> lista2 = new ArrayList<Integer>();
+		lista2.addAll(lista);
+		lista2.remove(lista.get(0));
+		lista2.remove(lista.get(lista.size()-1));
+		return lista2;
 	}
 	
 	public static void main(String[] args) {

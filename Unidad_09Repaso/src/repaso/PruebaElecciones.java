@@ -48,8 +48,8 @@ public class PruebaElecciones {
 	Eleccion miEleccion=new Eleccion(lista,7);
 	miEleccion.getCandidaturas()[1].addCandidato("Juanito Navarro");
 	System.out.println(c3);//toString es opcional por no ser String
-	miEleccion.setVotos("PSOE", 340000);
-	miEleccion.setVotos("PP", 280000);
+	miEleccion.setVotos("PSOE", 780000);
+	miEleccion.setVotos("PP", 1340000);
 	miEleccion.setVotos("IU", 160000);
 	
 	for(int i=0;i<lista.length;i++){

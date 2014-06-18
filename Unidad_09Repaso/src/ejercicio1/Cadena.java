@@ -2,35 +2,31 @@ package ejercicio1;
 
 import java.util.Scanner;
 
-public class cadena2 {
+public class Cadena {
 	static String mix(String c1,String c2){
 		StringBuilder cadena=new StringBuilder("");
 		StringBuilder cad1=new StringBuilder(c1);
 		StringBuilder cad2=new StringBuilder(c2);
-		int l=cad1.length()+cad2.length();
+		int vueltas;
+		if(cad1.length()>cad2.length()){
+			vueltas=cad2.length()/2;
+		}
+		else{
+			vueltas=cad1.length()/2;
+		}
 		int pos1=0;
 		int pos2=2;
-		while(cadena.length()<l){
-			if(cad1.length()>pos2)
+		for(int i=0;i<vueltas;i++){
 			cadena.append(cad1.substring(pos1, pos2));
-			else{
-				cadena.append(cad1.substring(pos1));
-			}
-			if(cad2.length()>pos2 )
 			cadena.append(cad2.substring(pos1, pos2));
-			else{
-				cadena.append(cad2.substring(pos1));
-			}
 			pos1=pos1+2;
 			pos2=pos2+2;		
-			}
-		System.out.println(cadena.length());
-		if(cadena.length()>=l){
-			if(cad1.length()>cad2.length())
-					cadena.append(cad1.substring(pos1-1));
-			else
-					cadena.append(cad2.substring(pos1-1));
 		}
+		System.out.println(cadena.length());
+		if(cad1.length()>=cad2.length())
+		cadena.append(cad1.substring(pos1));
+		else if(cad2.length()>=cad1.length())
+		cadena.append(cad2.substring(pos1));
 		return cadena.toString();
 	}
 	

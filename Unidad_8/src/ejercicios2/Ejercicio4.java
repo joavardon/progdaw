@@ -8,8 +8,9 @@ package ejercicios2;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.ListIterator;
-import java.util.Scanner;
+import java.util.Set;
 
 public class Ejercicio4 {
 	public static boolean tiene_duplicados(ArrayList<Integer>lista){
@@ -32,6 +33,33 @@ public class Ejercicio4 {
 		}*/
 		return rep;
 	}
+	public static boolean tiene_duplicados2(ArrayList<Integer> lista) {
+		boolean respuesta = false;
+		List<Integer> aux = new ArrayList<Integer>(lista);
+		
+		ListIterator<Integer> iterador1 = aux.listIterator();
+		while(iterador1.hasNext()){
+			Object elemento = iterador1.next();
+			iterador1.remove();
+			if(aux.contains(elemento)){
+				respuesta = true;
+				break;
+			}
+		}
+		
+		return respuesta;
+	}
+
+	public static boolean tiene_duplicados3(ArrayList<Integer> lista) {
+		Set<Integer> lista2 = new HashSet<Integer>();
+		lista2.addAll(lista);
+
+		if (lista.size() != lista2.size()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	public static void main(String[] args) {
 		ArrayList<Integer>lista=new ArrayList<Integer>();
@@ -42,6 +70,8 @@ public class Ejercicio4 {
 		lista.add(4);
 		lista.add(1);
 		System.out.println(tiene_duplicados(lista));
+		System.out.println(tiene_duplicados2(lista));
+		System.out.println(tiene_duplicados3(lista));
 			
 		
 	}
