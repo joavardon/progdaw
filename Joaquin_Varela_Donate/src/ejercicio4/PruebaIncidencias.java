@@ -29,8 +29,9 @@ public class PruebaIncidencias {
 			}while(opcion<1 || opcion>4);
 			switch(opcion){
 					case 1:
-						
-						Defectos i1=new Defectos(1,"defecto del sistema","v.25");
+						int numInc=(int)(Math.random()*20000+1);
+						System.out.println(numInc);
+						Defectos i1=new Defectos(numInc,"defecto del sistema","v.25");
 						String arch1="archivo1";
 						String arch2="archivo2";
 						String arch3="archivo3";
@@ -38,21 +39,22 @@ public class PruebaIncidencias {
 						i1.addArchivoAfectado(arch2);
 						i1.delArchivoAfectado(arch3);
 						i1.delArchivoAfectado(arch1);
-						i1.setEstado("Cerrada");
+						int estado=(int)(Math.random()*3);
+						String miestado=i1.asignaEstado(estado);
 						
 						if(!listaIncidencias.contains(i1)){
 							listaIncidencias.add(i1);
 							numIncidencias++;
 							if(i1.getClass().getSimpleName().equals("Defectos")){
 								defectos++;
-								if(i1.getEstado().equalsIgnoreCase("Asignada")||i1.getEstado().equalsIgnoreCase("Abierta")){
+								if(miestado.equalsIgnoreCase("Asignada")||miestado.equalsIgnoreCase("Abierta")){
 									abiertasDefectos++;
 								}
 								
 							}
 							else if(i1.getClass().getSimpleName().equals("Mejoras")){
 								mejoras++;
-								if(i1.getEstado().equalsIgnoreCase("Asignada")||i1.getEstado().equalsIgnoreCase("Abierta")){
+								if(miestado.equalsIgnoreCase("Asignada")||miestado.equalsIgnoreCase("Abierta")){
 									abiertasMejoras++;
 								}
 								
