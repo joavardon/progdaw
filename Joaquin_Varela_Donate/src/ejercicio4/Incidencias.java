@@ -1,11 +1,9 @@
 package ejercicio4;
 
-
 public class Incidencias {
-	private int id;
+	private final int id;
 	private String descripcion;
 	private String[] estado=new String[3];
-	
 	
 	Incidencias(int i,String m){
 		this.id=i;
@@ -17,11 +15,21 @@ public class Incidencias {
 		if(estadoString.equalsIgnoreCase("Abierta")){
 			this.estado[0]="Abierta";
 		}
-		else if(estadoString.equalsIgnoreCase("Asignada")){
+		else{
+		this.estado[0]=null;
+			}
+		if(estadoString.equalsIgnoreCase("Asignada")){
 			this.estado[1]="Asignada";
 		}
-		else if(estadoString.equalsIgnoreCase("Cerrada")){
+		else{
+			this.estado[1]=null;
+		}
+		
+		if(estadoString.equalsIgnoreCase("Cerrada")){
 			this.estado[2]="Cerrada";
+		}
+		else{
+			this.estado[2]=null;
 		}
 	}
 	public String getEstado() {
@@ -71,5 +79,7 @@ public class Incidencias {
 			return false;
 		return true;
 	}
-
+	
+	
+	
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
+import ejercicio4.Incidencias.Estados;
+
 
 public class PruebaIncidencias {
 	
@@ -61,6 +63,8 @@ public class PruebaIncidencias {
 									estado=teclado.next();
 									mejora.setEstado(estado);
 									}while(!estado.equalsIgnoreCase("abierta")&&!estado.equalsIgnoreCase("asignada")&&!estado.equalsIgnoreCase("cerrada"));
+									
+									
 									if(!listaIncidencias.contains(mejora)){
 										listaIncidencias.add(mejora);
 										numIncidencias++;
@@ -97,6 +101,7 @@ public class PruebaIncidencias {
 										estado=teclado.next();
 										defecto.setEstado(estado);
 										}while(!estado.equalsIgnoreCase("abierta")&&!estado.equalsIgnoreCase("asignada")&&!estado.equalsIgnoreCase("cerrada"));
+									
 									if(!listaIncidencias.contains(defecto)){
 										listaIncidencias.add(defecto);
 										numIncidencias++;
@@ -112,8 +117,10 @@ public class PruebaIncidencias {
 									else{
 										System.out.println("Ya existe");
 									}
+									
 									break;
 								}
+								
 							}
 							catch(Exception e){
 							System.out.println("Error. Introduce un numero entre las indicadas ");
@@ -137,6 +144,7 @@ public class PruebaIncidencias {
 			System.out.println("Error. Introduce un numero entre las indicadas ");
 			seguir=true;}
 		}while(opcion!=4 || seguir==true);
+	
 	}
 	
 }
