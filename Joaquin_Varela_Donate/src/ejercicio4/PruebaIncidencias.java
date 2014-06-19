@@ -5,14 +5,14 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class PruebaIncidencias {
-	static ArrayList<Incidencias>listaIncidencias=new ArrayList<Incidencias>();
-	static int numIncidencias=0;
-	static int defectos=0;
-	static int mejoras=0;
-	static int abiertasMejoras=0;
-	static int abiertasDefectos=0;
+	
 	public static void main(String[] args) {
-		
+		ArrayList<Incidencias>listaIncidencias=new ArrayList<Incidencias>();
+		int numIncidencias=0;
+		int defectos=0;
+		int mejoras=0;
+		int abiertasMejoras=0;
+		int abiertasDefectos=0;
 		Menu mimenu=new Menu();
 		mimenu.setTitulo("Gestor de Incidencias");
 		mimenu.añadirOpcion("Nueva");
@@ -30,7 +30,7 @@ public class PruebaIncidencias {
 			switch(opcion){
 					case 1:
 						
-						Defectos i1=new Defectos(1,"defecto","v.25");
+						Defectos i1=new Defectos(1,"defecto del sistema","v.25");
 						String arch1="archivo1";
 						String arch2="archivo2";
 						String arch3="archivo3";
