@@ -15,17 +15,17 @@ public class Incidencias {
 	public String asignaEstado(int est){
 		
 		switch (est) {
-		case 0:
-			this.estado[0]="Abierta";
-			break;
-			
-		case 1:
-			this.estado[1]="Asignada";
-			break;
-			
-		case 2:
-			this.estado[2]="Cerrada";
-			break;
+			case 0:
+				this.estado[0]="Abierta";
+				break;
+				
+			case 1:
+				this.estado[1]="Asignada";
+				break;
+				
+			case 2:
+				this.estado[2]="Cerrada";
+				break;
 		}
 		return this.estado[est];
 	}
