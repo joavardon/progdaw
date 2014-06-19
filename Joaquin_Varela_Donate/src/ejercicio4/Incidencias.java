@@ -4,40 +4,39 @@ package ejercicio4;
 public class Incidencias {
 	private int id;
 	private String descripcion;
-	private String[] estado;
+	private String[] estado=new String[3];
 	
 	
 	Incidencias(int i,String m){
 		this.id=i;
 		this.descripcion=m;
-		estado=new String[3];
-	}
-	public String asignaEstado(int est){
 		
-		switch (est) {
-			case 0:
-				this.estado[0]="Abierta";
-				break;
-				
-			case 1:
-				this.estado[1]="Asignada";
-				break;
-				
-			case 2:
-				this.estado[2]="Cerrada";
-				break;
-		}
-		return this.estado[est];
 	}
-	public String toString(){
-		String cadena="";
+	
+	public void setEstado(String estadoString) {
+		if(estadoString.equalsIgnoreCase("Abierta")){
+			this.estado[0]="Abierta";
+		}
+		else if(estadoString.equalsIgnoreCase("Asignada")){
+			this.estado[1]="Asignada";
+		}
+		else if(estadoString.equalsIgnoreCase("Cerrada")){
+			this.estado[2]="Cerrada";
+		}
+	}
+	public String getEstado() {
+		String estadoActual ="";
 		for(int i=0;i<estado.length;i++){
 			if(estado[i]!=null){
-				cadena=estado[i];
+				estadoActual=this.estado[i];
 			}
 		}
-		
-		return "Incidencia ("+getId()+") - "+ cadena+"\nDescripcion: "+getDescripcion();
+		return estadoActual;
+	}
+	
+	public String toString(){
+	
+		return "Incidencia ("+getId()+") - "+ getEstado()+"\nDescripcion: "+getDescripcion();
 	}
 	
 	public int getId() {
@@ -72,6 +71,5 @@ public class Incidencias {
 			return false;
 		return true;
 	}
-	
-	
+
 }

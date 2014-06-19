@@ -10,7 +10,7 @@ public class Mejoras extends Incidencias {
 		this.fecha=d;
 	}
 	public String toString(){
-		return super.toString()+"\nMejoras: "+getClass().getSimpleName()+"\nFecha:  "+getFecha()+"\nRealizada: "+getPorcentaje();
+		return super.toString()+"\nMejoras: "+getClass().getSimpleName()+"\nFecha:  "+getFecha()+"\nRealizada: "+getPorcentaje()+" %";
 		
 	}
 	public double getPorcentaje() {
@@ -25,5 +25,6 @@ public class Mejoras extends Incidencias {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
+	
 	
 }

@@ -2,6 +2,7 @@ package ejercicio4;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 
 public class PruebaIncidencias {
@@ -13,6 +14,7 @@ public class PruebaIncidencias {
 		int mejoras=0;
 		int abiertasMejoras=0;
 		int abiertasDefectos=0;
+		int numInc;
 		Menu mimenu=new Menu();
 		mimenu.setTitulo("Gestor de Incidencias");
 		mimenu.añadirOpcion("Nueva");
@@ -20,15 +22,14 @@ public class PruebaIncidencias {
 		mimenu.añadirOpcion("Resumen");
 		mimenu.añadirOpcion("Salir");
 		int opcion=-1;
-		boolean seguir=false;
-		int numInc;
-		String miestado;
-		int estado;
+		boolean seguir;
+		String estado;
 	do{
 		try{
 			do{
 			opcion=mimenu.mostrar();
 			}while(opcion<1 || opcion>4);
+			seguir=false;
 			switch(opcion){
 					case 1:
 						Menu mimenu2=new Menu();
@@ -37,26 +38,35 @@ public class PruebaIncidencias {
 						mimenu2.añadirOpcion("Nuevo Defecto");
 						mimenu2.añadirOpcion("Salir");
 						int opcion2=-1;
-						boolean seguir2=false;
+						Scanner teclado;
 						do{
 							try{
 								do{
 								opcion2=mimenu2.mostrar();
 								}while(opcion2<1 || opcion2>3);
+								seguir=false;
 								switch(opcion2){
 								case 1:
+									teclado=new Scanner(System.in);
 									numInc=(int)(Math.random()*20000+1);
-									System.out.println(numInc);
 									Date d=new Date();
-									Mejoras i2=new Mejoras(numInc,"mejora del sistema",d);
-									estado=(int)(Math.random()*3);
-									miestado=i2.asignaEstado(estado);
-									if(!listaIncidencias.contains(i2)){
-										listaIncidencias.add(i2);
+									System.out.println("Escribe el mensaje: ");
+									String m=teclado.nextLine();
+									Mejoras mejora=new Mejoras(numInc,"mejora del sistema",d);
+									System.out.println("Escribe el porcentaje: ");
+									double p=teclado.nextDouble();
+									mejora.setPorcentaje(p);
+									do{
+									System.out.println("Escribe el estado: ");
+									estado=teclado.next();
+									mejora.setEstado(estado);
+									}while(!estado.equalsIgnoreCase("abierta")&&!estado.equalsIgnoreCase("asignada")&&!estado.equalsIgnoreCase("cerrada"));
+									if(!listaIncidencias.contains(mejora)){
+										listaIncidencias.add(mejora);
 										numIncidencias++;
-										 if(i2.getClass().getSimpleName().equals("Mejoras")){
+										 if(mejora.getClass().getSimpleName().equals("Mejoras")){
 											mejoras++;
-											if(miestado.equalsIgnoreCase("Asignada")||miestado.equalsIgnoreCase("Abierta")){
+											if(mejora.getEstado().equalsIgnoreCase("Asignada")|mejora.getEstado().equalsIgnoreCase("Abierta")){
 												abiertasMejoras++;
 											}
 											
@@ -68,25 +78,31 @@ public class PruebaIncidencias {
 									}
 									break;
 								case 2:
+									teclado=new Scanner(System.in);
 									numInc=(int)(Math.random()*20000+1);
-									System.out.println(numInc);
-									Defectos i1=new Defectos(numInc,"defecto del sistema","v.25");
+									System.out.println("Escribe el mensaje: ");
+									m=teclado.nextLine();
+									System.out.println("Escribe la version: ");
+									String v=teclado.nextLine();
+									Defectos defecto=new Defectos(numInc,m,v);
 									String arch1="archivo1";
 									String arch2="archivo2";
-									String arch3="archivo3";
-									i1.addArchivoAfectado(arch1);
-									i1.addArchivoAfectado(arch2);
-									i1.delArchivoAfectado(arch3);
-									i1.delArchivoAfectado(arch1);
-									estado=(int)(Math.random()*3);
-									miestado=i1.asignaEstado(estado);
-									
-									if(!listaIncidencias.contains(i1)){
-										listaIncidencias.add(i1);
+									String arch3="archivo3";	
+									defecto.addArchivoAfectado(arch1);
+									defecto.addArchivoAfectado(arch2);
+									defecto.delArchivoAfectado(arch3);
+									defecto.delArchivoAfectado(arch1);
+									do{
+										System.out.println("Escribe el estado: ");
+										estado=teclado.next();
+										defecto.setEstado(estado);
+										}while(!estado.equalsIgnoreCase("abierta")&&!estado.equalsIgnoreCase("asignada")&&!estado.equalsIgnoreCase("cerrada"));
+									if(!listaIncidencias.contains(defecto)){
+										listaIncidencias.add(defecto);
 										numIncidencias++;
-										if(i1.getClass().getSimpleName().equals("Defectos")){
+										if(defecto.getClass().getSimpleName().equals("Defectos")){
 											defectos++;
-											if(miestado.equalsIgnoreCase("Asignada")||miestado.equalsIgnoreCase("Abierta")){
+											if(defecto.getEstado().equalsIgnoreCase("Asignada")||defecto.getEstado().equalsIgnoreCase("Abierta")){
 												abiertasDefectos++;
 											}
 											
@@ -101,8 +117,8 @@ public class PruebaIncidencias {
 							}
 							catch(Exception e){
 							System.out.println("Error. Introduce un numero entre las indicadas ");
-							seguir2=true;}
-						}while(opcion2!=3 || seguir2==true);	
+							seguir=true;}
+						}while(opcion2!=3 || seguir==true);
 						break;
 					
 					case 2:
