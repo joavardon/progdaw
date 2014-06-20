@@ -1,9 +1,6 @@
 package ejercicio3;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-
-
 public class Log {
 	ArrayList<LineaLog>milog=new ArrayList<LineaLog>();
 	Log(){
@@ -21,10 +18,16 @@ public class Log {
 	public  void add(String l){
 		
 		LineaLog linea=new LineaLog(l);
+		/*
 		Iterator<LineaLog>ite=milog.iterator();
 		while(ite.hasNext()){
 			LineaLog id=ite.next();
 			if(id.equals(linea)){
+				linea.id++;
+			}
+		}*/
+		for(int i=0;i<milog.size();i++){
+			if(milog.get(i).equals(linea)){
 				linea.id++;
 			}
 		}

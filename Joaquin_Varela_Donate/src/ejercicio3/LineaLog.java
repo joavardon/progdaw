@@ -6,7 +6,7 @@ import java.util.Date;
 public class LineaLog {
 	protected int id;
 	private String texto;
-	private Date fecha=new Date();
+	private Date fecha;
 	//Constructores
 		LineaLog(int i,String t,Date f){
 			this.id=i;
@@ -21,6 +21,7 @@ public class LineaLog {
 		
 		LineaLog(String t){
 			this.texto=t;
+			fecha=new Date();
 		}
 		
 		public String toString(){
