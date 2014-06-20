@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-import ejercicio4.Incidencias.Estados;
-
-
 public class PruebaIncidencias {
 	
 	public static void main(String[] args) {

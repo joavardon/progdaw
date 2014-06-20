@@ -1,11 +1,11 @@
 package ejercicio3;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 public class Log {
 	ArrayList<LineaLog>milog=new ArrayList<LineaLog>();
-
 	Log(){
 		
 	}
@@ -18,11 +18,17 @@ public class Log {
 		return cadena;
 	}
 	
-	public  void add(LineaLog l){
-		if(!milog.contains(l))
-		milog.add(l);
-		else
-		System.out.println("Ya hay uno con ese ID");
+	public  void add(String l){
+		
+		LineaLog linea=new LineaLog(l);
+		Iterator<LineaLog>ite=milog.iterator();
+		while(ite.hasNext()){
+			LineaLog id=ite.next();
+			if(id.equals(linea)){
+				linea.id++;
+			}
+		}
+		milog.add(linea);
 	}
 
 	public ArrayList<LineaLog> getMilog() {

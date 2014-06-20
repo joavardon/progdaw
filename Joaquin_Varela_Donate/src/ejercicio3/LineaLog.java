@@ -1,51 +1,49 @@
 package ejercicio3;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
 public class LineaLog {
-	private String id="#1";
+	protected int id;
 	private String texto;
-	Date d=new Date();
-	private String fecha=d.toString();
+	private Date fecha=new Date();
 	//Constructores
-		LineaLog(String i,String t,String f){
+		LineaLog(int i,String t,Date f){
 			this.id=i;
 			this.texto=t;
 			this.fecha=f;
 		}
-		LineaLog(String i,String t){
+		LineaLog(int i,String t){
 			this.id=i;
 			this.texto=t;
+			fecha=new Date();
 		}
 		
 		LineaLog(String t){
 			this.texto=t;
-			id="#1";
-			
 		}
 		
 		public String toString(){
-			return getId()+" - "+getFecha()+" - "+getTexto();
+			return "#"+getId()+" - "+getFecha()+" - "+getTexto();
 		}
 		
 		//accesadores
-		public String getId() {
+		public int getId() {
 			return id;
 		}
 		public String getTexto() {
 			return texto;
 		}
-		public String getFecha() {
+		public Date getFecha() {
 			return fecha;
 		}
+		
+		
 		@Override
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
-			result = prime * result + ((id == null) ? 0 : id.hashCode());
+			result = prime * result + id;
 			return result;
 		}
 		@Override
@@ -57,13 +55,12 @@ public class LineaLog {
 			if (getClass() != obj.getClass())
 				return false;
 			LineaLog other = (LineaLog) obj;
-			if (id == null) {
-				if (other.id != null)
-					return false;
-			} else if (!id.equals(other.id))
+			if (id != other.id)
 				return false;
 			return true;
 		}
+	
+		
 	
 	
 }
