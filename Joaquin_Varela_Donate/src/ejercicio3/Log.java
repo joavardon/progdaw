@@ -16,8 +16,15 @@ public class Log {
 	}
 	
 	public  void add(String l){
-		
-		LineaLog linea=new LineaLog(l);
+		LineaLog linea;
+		boolean parar = false;
+		linea=new LineaLog(l);//siestuviera dentro del bucle empezaria con id a cero siempre y simepre seria 1 su id
+		do{
+		linea.id++;
+		if(!milog.contains(linea)){
+			milog.add(linea);
+			parar=true;
+		}
 		/*
 		Iterator<LineaLog>ite=milog.iterator();
 		while(ite.hasNext()){
@@ -26,12 +33,14 @@ public class Log {
 				linea.id++;
 			}
 		}*/
+		/*
 		for(int i=0;i<milog.size();i++){
 			if(milog.get(i).equals(linea)){
 				linea.id++;
 			}
-		}
-		milog.add(linea);
+		}*/
+		}while(parar==false);
+		
 	}
 
 	public ArrayList<LineaLog> getMilog() {
